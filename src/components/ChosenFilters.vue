@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits, type PropType } from 'vue'
+import { defineProps, defineEmits, type PropType } from 'vue'
 
 const props = defineProps({
 	selectedFilters: {

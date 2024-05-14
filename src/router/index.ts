@@ -8,6 +8,11 @@ const router = createRouter({
 			name: 'dashboard',
 			component: () => import('@/views/DashboardView.vue'),
 		},
+		{
+			path: '/job-offer/:id',
+			name: 'job-offer',
+			component: () => import('@/views/JobView.vue'),
+		},
 	],
 })
 

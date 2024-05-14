@@ -11,7 +11,9 @@
 			class="w-[50px] h-[50px] absolute -top-6 lg:w-[80px] lg:h-[80px] lg:top-[50%] lg:left-8 lg:-translate-y-1/2" />
 		<div class="info-box lg:ml-[120px]">
 			<div class="offer-info flex items-center gap-6 py-4 lg:py-2">
-				<p class="text-sm font-bold text-desaturated-dark-cyan">{{ props.company }}</p>
+				<p class="text-sm font-bold text-desaturated-dark-cyan">
+					{{ props.company }}
+				</p>
 				<div class="new flex gap-2">
 					<p class="bg-desaturated-dark-cyan text-white text-sm font-bold rounded-2xl py-0.5 px-3" v-if="props.new">
 						NEW!
@@ -23,11 +25,12 @@
 					</p>
 				</div>
 			</div>
-			<p
+			<RouterLink
+				:to="`/job-offer/${$props.id}`"
 				class="text-md font-bold mb-2 hover:text-desaturated-dark-cyan hover:cursor-pointer hover:transition hover:duration-300">
 				{{ props.position }}
-			</p>
-			<ul class="offer-desc flex items-center gap-4 text-md text-gray-500 mb-4">
+			</RouterLink>
+			<ul class="offer-desc flex items-center gap-4 text-md text-gray-500 my-2">
 				<li>{{ props.postedAt }}</li>
 				<li>{{ props.contract }}</li>
 				<li>{{ props.location }}</li>
@@ -65,8 +68,10 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const props = defineProps([
+	'id',
 	'company',
 	'logo',
 	'new',

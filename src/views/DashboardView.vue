@@ -7,6 +7,7 @@
 		<BaseCard
 			v-for="job in filteredJobs"
 			:key="job.id"
+			:id="job.id"
 			:company="job.company"
 			:logo="job.logo"
 			:new="job.new"
