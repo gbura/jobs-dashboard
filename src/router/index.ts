@@ -13,6 +13,11 @@ const router = createRouter({
 			name: 'job-details',
 			component: () => import('@/views/JobDetails.vue'),
 		},
+		{
+			path: '/:catchAll(.*)',
+			name: 'NotFound',
+			redirect: '/',
+		},
 	],
 })
 
