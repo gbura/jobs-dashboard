@@ -26,7 +26,7 @@
 				</div>
 			</div>
 			<RouterLink
-				:to="`/job-offer/${$props.id}`"
+				:to="`/job-details/${$props.id}`"
 				class="text-md font-bold mb-2 hover:text-desaturated-dark-cyan hover:cursor-pointer hover:transition hover:duration-300">
 				{{ props.position }}
 			</RouterLink>

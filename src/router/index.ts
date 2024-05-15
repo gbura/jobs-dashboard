@@ -9,9 +9,9 @@ const router = createRouter({
 			component: () => import('@/views/DashboardView.vue'),
 		},
 		{
-			path: '/job-offer/:id',
-			name: 'job-offer',
-			component: () => import('@/views/JobView.vue'),
+			path: '/job-details/:id',
+			name: 'job-details',
+			component: () => import('@/views/JobDetails.vue'),
 		},
 	],
 })
