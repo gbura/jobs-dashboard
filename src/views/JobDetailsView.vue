@@ -1,6 +1,6 @@
 <template>
 	<div class="container py-4">
-		<div class="relative bg-white flex flex-col items-center justify-center gap-4 py-4 px-4 lg:gap-8 lg:text-lg">
+		<div class="relative bg-white flex flex-col items-center justify-center gap-4 p-4 lg:gap-8 lg:text-lg">
 			<RouterLink :to="{ name: 'dashboard' }" class="absolute top-2 left-2 flex gap-2 items-center"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"

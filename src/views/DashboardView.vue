@@ -30,6 +30,9 @@ import ChosenFilters from '@/components/ChosenFilters.vue'
 import database from '@/db/data.json'
 import type { Job } from '@/types/Job'
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const jobs = ref<Job[]>([])
 jobs.value = database
@@ -41,11 +44,18 @@ const addFilter = (filter: string) => {
 		return
 	} else {
 		selectedFilters.value.push(filter)
+		updateQuery()
 	}
 }
 
 const removeAllFilters = () => {
 	selectedFilters.value = []
+	router.push({ query: { filters: undefined } })
+}
+
+const updateQuery = () => {
+	const query = selectedFilters.value.length > 0 ? selectedFilters.value.join('?') : undefined
+	router.push({ query: { filters: query } })
 }
 
 const filteredJobs = computed(() => {

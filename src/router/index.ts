@@ -11,7 +11,7 @@ const router = createRouter({
 		{
 			path: '/job-details/:id',
 			name: 'job-details',
-			component: () => import('@/views/JobDetails.vue'),
+			component: () => import('@/views/JobDetailsView.vue'),
 		},
 		{
 			path: '/:catchAll(.*)',
