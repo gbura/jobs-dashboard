@@ -4,7 +4,7 @@
 			v-if="selectedFilters.length > 0"
 			:selectedFilters="selectedFilters"
 			@remove-all-filters="removeAllFilters" />
-		<BaseCard
+		<JobCard
 			v-for="job in filteredJobs"
 			:key="job.id"
 			:id="job.id"
@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseCard from '@/components/ui/BaseCard.vue'
+import JobCard from '@/components/JobCard.vue'
 import ChosenFilters from '@/components/ChosenFilters.vue'
 import database from '@/db/data.json'
 import type { Job } from '@/types/Job'

@@ -34,29 +34,21 @@
 		</div>
 		<hr class="bg-gray-500 lg:hidden" />
 		<div class="tags flex gap-4 flex-wrap mt-4 text-sm lg:items-center">
-			<button
-				class="px-3 py-1 rounded-sm bg-light-grayish-cyan text-desaturated-dark-cyan font-bold cursor-pointer hover:bg-desaturated-dark-cyan hover:text-white hover:transition hover:duration-300"
-				@click="addFilter(role)">
+			<base-filter-button @click="addFilter(role)">
 				{{ role }}
-			</button>
-			<button
-				class="px-2 py-1 rounded-sm bg-light-grayish-cyan text-desaturated-dark-cyan font-bold cursor-pointer hover:bg-desaturated-dark-cyan hover:text-white hover:transition hover:duration-300"
-				@click="addFilter(level)">
+			</base-filter-button>
+			<base-filter-button @click="addFilter(level)">
 				{{ level }}
-			</button>
-			<div v-for="language in languages">
-				<button
-					class="px-2 py-1 rounded-sm bg-light-grayish-cyan text-desaturated-dark-cyan font-bold cursor-pointer hover:bg-desaturated-dark-cyan hover:text-white hover:transition hover:duration-300"
-					@click="addFilter(language)">
+			</base-filter-button>
+			<div v-for="(language, idx) in languages" :key="idx">
+				<base-filter-button @click="addFilter(language)">
 					{{ language }}
-				</button>
+				</base-filter-button>
 			</div>
-			<div v-for="tool in tools">
-				<button
-					class="px-2 py-1 rounded-sm bg-light-grayish-cyan text-desaturated-dark-cyan font-bold cursor-pointer hover:bg-desaturated-dark-cyan hover:text-white hover:transition hover:duration-300"
-					@click="addFilter(tool)">
+			<div v-for="(tool, idx) in tools" :key="idx">
+				<base-filter-button @click="addFilter(tool)">
 					{{ tool }}
-				</button>
+				</base-filter-button>
 			</div>
 		</div>
 	</div>
@@ -65,6 +57,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import type { Job } from '@/types/Job'
+import BaseFilterButton from './ui/BaseFilterButton.vue'
 
 defineProps<Job>()
 const emit = defineEmits(['add-filter'])
