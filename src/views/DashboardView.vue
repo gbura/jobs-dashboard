@@ -4,23 +4,7 @@
 			v-if="selectedFilters.length > 0"
 			:selectedFilters="selectedFilters"
 			@remove-all-filters="removeAllFilters" />
-		<JobCard
-			v-for="job in filteredJobs"
-			:key="job.id"
-			:id="job.id"
-			:company="job.company"
-			:logo="job.logo"
-			:new="job.new"
-			:featured="job.featured"
-			:position="job.position"
-			:postedAt="job.postedAt"
-			:contract="job.contract"
-			:location="job.location"
-			:role="job.role"
-			:level="job.level"
-			:languages="job.languages"
-			:tools="job.tools"
-			@add-filter="addFilter" />
+		<JobCard v-for="job in filteredJobs" :key="job.id" :job="job" @add-filter="addFilter" />
 	</div>
 </template>
 
@@ -29,15 +13,20 @@ import JobCard from '@/components/JobCard.vue'
 import ChosenFilters from '@/components/ChosenFilters.vue'
 import database from '@/db/data.json'
 import type { Job } from '@/types/Job'
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
+const route = useRoute()
 
 const jobs = ref<Job[]>([])
 jobs.value = database
 
 const selectedFilters = ref<string[]>([])
+
+onMounted(() => {
+	selectedFilters.value = route.query.filters ? String(route.query.filters).split('?') : []
+})
 
 const addFilter = (filter: string) => {
 	if (selectedFilters.value.includes(filter)) {

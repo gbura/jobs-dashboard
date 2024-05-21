@@ -6,7 +6,7 @@
 				featured,
 		}">
 		<img
-			:src="`./src/assets/images/${logo}`"
+			:src="`./images/${logo}`"
 			:alt="company"
 			class="w-[50px] h-[50px] absolute -top-6 lg:w-[80px] lg:h-[80px] lg:top-[50%] lg:left-8 lg:-translate-y-1/2" />
 		<div class="info-box lg:ml-[120px]">
@@ -15,7 +15,7 @@
 					{{ company }}
 				</p>
 				<div class="new flex gap-2">
-					<p class="bg-desaturated-dark-cyan text-white text-sm font-bold rounded-2xl py-0.5 px-3" v-if="new">NEW!</p>
+					<p class="bg-desaturated-dark-cyan text-white text-sm font-bold rounded-2xl py-0.5 px-3" v-if="isNew">NEW!</p>
 					<p class="bg-very-dark-grayish-cyan text-white text-sm font-bold rounded-2xl py-0.5 px-3" v-if="featured">
 						FEATURED
 					</p>
@@ -58,8 +58,28 @@
 import { RouterLink } from 'vue-router'
 import type { Job } from '@/types/Job'
 import BaseFilterButton from './ui/BaseFilterButton.vue'
+import { toRefs } from 'vue'
 
-defineProps<Job>()
+const props = defineProps<{
+	job: Job
+}>()
+
+const {
+	id,
+	company,
+	logo,
+	new: isNew,
+	featured,
+	position,
+	postedAt,
+	contract,
+	location,
+	role,
+	level,
+	languages,
+	tools,
+} = toRefs(props.job)
+
 const emit = defineEmits(['add-filter'])
 
 const addFilter = (filter: string) => {
