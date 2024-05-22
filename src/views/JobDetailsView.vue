@@ -16,7 +16,7 @@
 					>go back</span
 				>
 			</RouterLink>
-			<img :src="`../src/assets/images/${selectedJob?.logo}`" alt="Company logo" />
+			<img :src="`../images/${selectedJob?.logo}`" alt="Company logo" />
 			<strong class="lg:text-xl">{{ selectedJob?.company }}</strong>
 			<p class="lg:text-lg">{{ selectedJob?.position }}</p>
 			<hr class="bg-black w-full" />
